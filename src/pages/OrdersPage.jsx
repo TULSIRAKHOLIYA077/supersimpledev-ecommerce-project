@@ -6,6 +6,8 @@ const OrdersPage = () => {
     <>
       <title>Orders</title>
 
+      <link rel="icon"  href="orders-favicon.png" />
+
       <Header/>
 
       <div className="orders-page">
