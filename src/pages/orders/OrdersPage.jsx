@@ -1,11 +1,11 @@
 import { Link } from "react-router";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import "./OrdersPage.css";
-import BuyAgainIcon from "../assets/images/icons/buy-again.png";
+import BuyAgainIcon from "../../assets/images/icons/buy-again.png";
 import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
-import { formatMoney } from "../utils/money";
+import { formatMoney } from "../../utils/money";
 
 const OrdersPage = ({ cart }) => {
   const [orders, setOrders] = useState([]);
