@@ -1,11 +1,11 @@
-import './header.css';
-import {Link, NavLink} from 'react-router';
-import CartIcon from '../assets/images/icons/cart-icon.png';
-import SearchIcon from '../assets/images/icons/search-icon.png';
-import LogoWhite from '../assets/images/logo-white.png';
-import MobileLogoWhite from '../assets/images/mobile-logo-white.png';
+import "./header.css";
+import { Link, NavLink } from "react-router";
+import CartIcon from "../assets/images/icons/cart-icon.png";
+import SearchIcon from "../assets/images/icons/search-icon.png";
+import LogoWhite from "../assets/images/logo-white.png";
+import MobileLogoWhite from "../assets/images/mobile-logo-white.png";
 
-const Header = ({cart}) => {
+const Header = ({ cart }) => {
   let totalQuantity = 0;
 
   cart.forEach((cartItem) => {
