@@ -14,6 +14,11 @@ const Product = ({ product, loadCart }) => {
     await loadCart();
   };
 
+  const selectQuantity = (event) => {
+    const quantitySelected = Number(event.target.value);
+    setQuantity(quantitySelected);
+  };
+  
   return (
     <div className="product-container">
       <div className="product-image-container">
@@ -35,14 +40,7 @@ const Product = ({ product, loadCart }) => {
       <div className="product-price">{formatMoney(product.priceCents)}</div>
 
       <div className="product-quantity-container">
-        <select
-          value={quantity}
-          onChange={(event) => {
-            const quantitySelected = Number(event.target.value);
-            setQuantity(quantitySelected);
-            console.log(quantitySelected);
-          }}
-        >
+        <select value={quantity} onChange={selectQuantity}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -63,10 +61,7 @@ const Product = ({ product, loadCart }) => {
         Added
       </div>
 
-      <button
-        className="add-to-cart-button button-primary"
-        onClick={addToCart}
-      >
+      <button className="add-to-cart-button button-primary" onClick={addToCart}>
         Add to Cart
       </button>
     </div>
