@@ -3,8 +3,16 @@ import { formatMoney } from "../../utils/money";
 import axios from "axios";
 import CheckmarkIcon from "../../assets/images/icons/checkmark.png";
 
-const Product = ({product, loadCart}) => {
+const Product = ({ product, loadCart }) => {
   const [quantity, setQuantity] = useState(1);
+
+  const addToCart = async () => {
+    await axios.post("api/cart-items", {
+      productId: product.id,
+      quantity,
+    });
+    await loadCart();
+  };
 
   return (
     <div className="product-container">
@@ -57,13 +65,7 @@ const Product = ({product, loadCart}) => {
 
       <button
         className="add-to-cart-button button-primary"
-        onClick={async () => {
-          await axios.post("api/cart-items", {
-            productId: product.id,
-            quantity
-          });
-          await loadCart();
-        }}
+        onClick={addToCart}
       >
         Add to Cart
       </button>
