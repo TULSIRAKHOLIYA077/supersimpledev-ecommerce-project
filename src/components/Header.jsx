@@ -1,5 +1,5 @@
 import "./header.css";
-import { Link, NavLink, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate, useSearchParams } from "react-router";
 import CartIcon from "../assets/images/icons/cart-icon.png";
 import SearchIcon from "../assets/images/icons/search-icon.png";
 import LogoWhite from "../assets/images/logo-white.png";
@@ -8,15 +8,21 @@ import { useState } from "react";
 
 const Header = ({ cart }) => {
   const navigate = useNavigate();
-  const [search, setSearch] = useState('');
+  const [searchParams] = useSearchParams();
 
-  const updateSearchInput = (event) =>{
-    setSearch(event.target.value)
-  }
+  const searchText = searchParams.get('search');
 
-  const searchProducts = () =>{
+  // || '' is a shortcut. It means if searchText does not exist
+  // it will use a default value of ''.
+  const [search, setSearch] = useState(searchText || '');
+
+  const updateSearchInput = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const searchProducts = () => {
     navigate(`/?search=${search}`);
-  }
+  };
   let totalQuantity = 0;
 
   cart.forEach((cartItem) => {
@@ -33,7 +39,12 @@ const Header = ({ cart }) => {
       </div>
 
       <div className="middle-section">
-        <input className="search-bar" onChange={updateSearchInput} type="text" placeholder="Search" />
+        <input
+          className="search-bar"
+          onChange={updateSearchInput}
+          type="text"
+          placeholder="Search"
+        />
 
         <button className="search-button" onClick={searchProducts}>
           <img className="search-icon" src={SearchIcon} />
