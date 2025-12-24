@@ -24,14 +24,14 @@ const Product = ({ product, loadCart }) => {
     const quantitySelected = Number(event.target.value);
     setQuantity(quantitySelected);
   };
-  
+
   return (
     <div className="product-container">
       <div className="product-image-container">
-        <img 
+        <img
           data-testid="product-image"
-          className="product-image" 
-          src={product.image} 
+          className="product-image"
+          src={product.image}
         />
       </div>
 
@@ -67,14 +67,21 @@ const Product = ({ product, loadCart }) => {
 
       <div className="product-spacer"></div>
 
-      <div className="added-to-cart" style={{
-        opacity: showAddedMessage ? 1 : 0,
-      }}>
+      <div
+        className="added-to-cart"
+        style={{
+          opacity: showAddedMessage ? 1 : 0,
+        }}
+      >
         <img src={CheckmarkIcon} />
         Added
       </div>
 
-      <button className="add-to-cart-button button-primary" onClick={addToCart}>
+      <button 
+        className="add-to-cart-button button-primary" 
+        onClick={addToCart}
+        data-testid="add-to-cart-button"
+      >
         Add to Cart
       </button>
     </div>
